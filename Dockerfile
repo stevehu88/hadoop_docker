@@ -9,7 +9,7 @@ WORKDIR /root
 
 
 # install openssh-server, openjdk and wget
-RUN apt-get update && apt-get install -y  openssh-server software-properties-common
+RUN apt-get update && apt-get install -y  openssh-server software-properties-common vim-gtk
 
 RUN add-apt-repository -y ppa:openjdk-r/ppa && apt-get update && apt-get install -y openjdk-8-jdk
 
@@ -42,6 +42,7 @@ RUN mv /tmp/sshd_config  /etc/ssh && \
     mv /tmp/core-site.xml $HADOOP_HOME/etc/hadoop/core-site.xml && \
     mv /tmp/mapred-site.xml $HADOOP_HOME/etc/hadoop/mapred-site.xml && \
     mv /tmp/yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
+    mv /tmp/workers $HADOOP_HOME/etc/hadoop/workers && \
     mv /tmp/start-hadoop.sh ~/start-hadoop.sh && \
     mv /tmp/run-wordcount.sh ~/run-wordcount.sh
 
